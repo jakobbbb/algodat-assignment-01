@@ -3,10 +3,12 @@
 #include "io.hpp"
 
 int main(int argc, char* argv[]) {
-  auto a = to_vector<unsigned>(argc, argv);
   try {
+    auto a = to_vector<unsigned>(argc, argv);
     print(countingsort(a));
-  } catch (std::invalid_argument const& e) {
-    std::cout << e.what();
+  } catch (std::bad_alloc const& e) {
+    std::cout << "elements must be positive!" << '\n';
+  } catch (std::exception const& e) {
+    std::cout << e.what() << '\n';
   }
 }

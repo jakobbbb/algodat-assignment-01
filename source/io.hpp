@@ -28,6 +28,8 @@ std::vector<T> to_vector(int argc, char *argv[]) {
       std::cerr << "Warning: ignoring invalid argument '" << argv[i] << "'.\n";
     } catch (std::out_of_range const& e) {
       std::cerr << "Warning: ignoring out-of-range '" << argv[i] << "'.\n";
+    } catch (...) {
+      std::cerr << "Warning: ignoring '" << argv[i] << "'.\n";
     }
   }
   return xs;
