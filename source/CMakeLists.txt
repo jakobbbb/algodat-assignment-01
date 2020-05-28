@@ -1,6 +1,6 @@
-add_executable(countingsort
-    countingsort.cpp
-    )
+#add_executable(countingsort
+#    countingsort.cpp
+#    )
 
 add_executable(tests
     tests.cpp
