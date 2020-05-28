@@ -1,9 +1,10 @@
-add_executable(helloworld
-    helloworld.cpp
+add_executable(countingsort
+    countingsort.cpp
     )
 
 add_executable(tests
     tests.cpp
+    io.hpp
     )
 
 # generate compile_commands.json
