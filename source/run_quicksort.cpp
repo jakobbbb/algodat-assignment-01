@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
       print(quicksort(a));
     }
     else {
-      a = to_vector<int>(argc, argv);
+      auto a = to_vector<int>(argc, argv);
       print(quicksort(a));
     }
   } catch (std::invalid_argument const& e) {

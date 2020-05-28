@@ -1,12 +1,12 @@
 add_library(sort
     countingsort.cpp
-    #quicksort.cpp
+    quicksort.hpp
     )
 
 add_executable(count run_countingsort.cpp)
 target_link_libraries(count sort)
-# add_executable(quick run_quicksort.cpp)
-# target_link_libraries(quick sort)
+add_executable(quick run_quicksort.cpp)
+target_link_libraries(quick sort)
 
 add_executable(tests tests.cpp)
 target_link_libraries(tests sort)
