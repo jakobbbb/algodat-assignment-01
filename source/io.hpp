@@ -1,3 +1,6 @@
+#ifndef IO_HPP
+#define IO_HPP
+
 #include <iostream>
 #include <vector>
 
@@ -5,7 +8,7 @@ template<typename T>
 void print(std::vector<T> const& xs) {
   int n = xs.size();
   for (int i = 0; i < n - 1; ++i) {
-    std::cout << xs[i] << ", ";
+    std::cout << xs[i] << ' ';
   }
   if (n == 0) {
     std::cout << "(empty)";
@@ -29,3 +32,4 @@ std::vector<T> to_vector(int argc, char *argv[]) {
   }
   return xs;
 }
+#endif  // IO_HPP

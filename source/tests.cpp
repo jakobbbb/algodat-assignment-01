@@ -1,8 +1,54 @@
 #define CATCH_CONFIG_MAIN
 #include "io.hpp"
+#include "countingsort.hpp"
 #include <catch2/catch.hpp>
 #include <array>
 #include <iostream>
+
+
+SCENARIO("countingsort", "[countingsort]") {
+
+  const std::vector<unsigned> a_sorted{1, 1, 2, 4, 4, 5, 6, 7, 9, 13};
+  const std::vector<unsigned> a_unsorted{4, 2, 6, 1, 5, 13, 4, 1, 7, 9};
+  const std::vector<unsigned> b_sorted{1, 1, 1, 2, 2, 3, 3, 4, 4, 6, 6};
+  const std::vector<unsigned> b_unsorted{6, 1, 2, 4, 1, 3, 4, 6, 1 , 3, 2};
+  GIVEN("sorted vectors of unsigned") {
+    REQUIRE(countingsort(a_sorted) == a_sorted);
+    REQUIRE(countingsort(b_sorted) == b_sorted);
+  }
+  GIVEN("unsorted vectors of unsigned") {
+    REQUIRE(countingsort(a_unsorted) == a_sorted);
+    REQUIRE(countingsort(b_unsorted) == b_sorted);
+  }
+
+  const std::vector<unsigned> empty{};
+  GIVEN("an empty vector of unsigned") {
+    REQUIRE(countingsort(empty) == empty);
+  }
+
+  const std::vector<unsigned> one{1};
+  GIVEN("a one-element vector of unsigned") {
+    REQUIRE(countingsort(one) == one);
+  }
+
+  const std::vector<unsigned> two_sorted{2, 4};
+  const std::vector<unsigned> two_unsorted{4, 2};
+  GIVEN("two-element vectors of unsigned") {
+    REQUIRE(countingsort(two_sorted) == two_sorted);
+    REQUIRE(countingsort(two_unsorted) == two_sorted);
+  }
+
+  const std::vector<unsigned> one_zero{0};
+  std::vector<unsigned> has_zero{a_unsorted};
+  has_zero[has_zero.size() - 1] = 0;
+  GIVEN("vectors containing zeroes") {
+    REQUIRE_THROWS(countingsort(one_zero));
+    REQUIRE_THROWS(countingsort(has_zero));
+  }
+}
+
+SCENARIO("quicksort", "[quicksort]") {
+}
 
 SCENARIO("print", "[print]") {
   GIVEN("an empty vector of integers") {
